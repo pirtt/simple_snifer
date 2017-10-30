@@ -377,7 +377,7 @@ int main ()
 	if (dev == NULL)
 	{
 		printf ("Device found error!\n");
-		exit (1);
+		printf("----->%s<----\n",errbuf);
 	}	
 	printf("Device: %s\n", dev);
 	descr = pcap_open_live (dev, BUFSIZ, 1, 0, errbuf);
@@ -386,7 +386,8 @@ int main ()
 		printf ("Descriptor pcap_t error!\n");
 		exit (1);	
 	}
-	pcap_loop (descr, -1, callback, NULL);
+	pcap_loop (descr, 1000, callback, NULL);
 	pcap_close (descr); 
 	return 1;
 }
+//Create execution snifer file
